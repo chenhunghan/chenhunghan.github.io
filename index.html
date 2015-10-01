@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>{{ in-between-ness }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" type="text/css">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <!--correction of bootstrap-->
+    <style type="text/css">
+	    /*responsible hack for better ipad determination*/
+	    @media (min-width:768px) and (max-width:1080px){
+			.hidden-desktop{display:inherit !important;} 
+			.visible-desktop{display:none !important ;} 
+			.visible-tablet{display:inherit !important;} 
+			.hidden-tablet{display:none !important;}}
+		
+		body {
+			padding-top: 40px;
+			background: transparent;
+			background-image: url("http://chh-portfolio.s3.amazonaws.com/bg.png");
+			font-size: 12px;
+		}
+		a {
+			color:#000000;
+			text-decoration: underline;
+		}
+		a:hover {
+			color: #353535;
+			
+		}
+		#div_bgcanvas{
+			margin-left: -100px;
+			min-width:1200px;
+		}
+		#mian-content {
+			position: relative;
+			padding-left: 20px;
+			padding-right: 40px;
+		}
+		#left-sidebar {
+			padding-left: 15px;
+		} 
+		.nav-tabs {
+			border: 0px;
+		}
+		#right-sidebar{
+			right:0px; 
+		}
+		#right-sidebar .right_side_bar_tags h6 {
+			color: #a6a6a6;
+		}	
+		.right_side_bar_tags .btn{
+			margin: 0px 0px 2px 0;
+			color:rgba(150,150,150,0.6);
+		}
+		.right_side_bar_tags .btn:hover{
+		}
+		p {
+			line-height: 18px;
+		}
+		#cell-phone-menu .btn{
+			margin: 3px 3px 0px 0px
+		}
+		.well{
+			background-color: rgba(255,255,255,0.36);
+		}
+		.btn{
+			margin: 4px 10px 4px 0;
+		}
+		.btn-mini{
+			font-size: 12px;
+		}
+		.label{
+			margin: 3px 10px 3px 0;
+		}
+		.videoWrapper {
+			position: relative;
+			padding-bottom: 56.25%; /* 16:9 */
+			padding-top: 45px;
+			margin-top: 20px;
+			height: 0;
+		}
+		.videoWrapper iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		.nav-tabs li a:hover { 
+			background: rgb(255,255,255); /* Old browsers */
+			background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(247,247,247,1) 97%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(97%,rgba(247,247,247,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(247,247,247,1) 97%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(247,247,247,1) 97%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(247,247,247,1) 97%); /* IE10+ */
+			background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(247,247,247,1) 97%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=1 ); /* IE6-9 */
+		}
+		.nav .nav-tabs .active{ 
+			background: rgb(255,255,255); /* Old browsers */
+			background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(247,247,247,1) 97%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(97%,rgba(247,247,247,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(247,247,247,1) 97%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(247,247,247,1) 97%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(247,247,247,1) 97%); /* IE10+ */
+			background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(247,247,247,1) 97%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=1 ); /* IE6-9 */
+		}
+		.nav-tabs li {
+			background: rgb(255,255,255); /* Old browsers */
+			background: -moz-linear-gradient(left,  rgba(255,255,255,0.2) 0%, rgba(247,247,247,0.8) 97%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0.2)), color-stop(97%,rgba(247,247,247,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(left,  rgba(255,255,255,0.2) 0%,rgba(247,247,247,1) 97%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(left,  rgba(255,255,255,0.2) 0%,rgba(247,247,247,1) 97%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(left,  rgba(255,255,255,0.2) 0%,rgba(247,247,247,1) 97%); /* IE10+ */
+			background: linear-gradient(to right,  rgba(255,255,255,0.2) 0%,rgba(247,247,247,1) 97%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f7f7f7',GradientType=1 ); /* IE6-9 */
+		}
+		#loading {
+			width: 95%;
+			height: 200%;
+			display: block;
+			background-color: #fff;
+			opacity: 0.2;
+			padding-left: 20px;
+			padding-bottom: 3000px;
+		}
+		#loading p{
+			-webkit-filter: blur(0.8px);
+		}
+		#loading-image {
+			width:24px;
+			height:24px
+		}
+	</style>
+	<!--[if !IE]>-->
+	<!--bg-canvas-->
+	<script src="js/paper-full.min.js" type="text/javascript" ></script>
+	<!--bg-canvas-code-->
+	<script canvas="bgcanvas" type="text/paperscript">
+		var width, height, center;
+		var points = 8;
+		var smooth = true;
+		var path = new Path({
+			fillColor: '#000',
+			opacity: 0.025
+		});
+		var path1 = new Path({
+			fillColor: '#000',
+			opacity: 0.03
+		});
+		var path2 = new Path({
+			fillColor: '#000',
+			opacity: 0.02
+		});
+		var mousePos = view.center / 1;
+		var pathHeight = mousePos.y * 10;
+		
+		initializePath();
+		function initializePath() {
+			center = view.center;
+			width = view.size.width * 1.3;
+			height = view.size.height / 2;
+			path.segments = [];
+			path.add(view.bounds.bottomLeft);
+			path1.segments = [];
+			path1.add(view.bounds.bottomLeft);
+			path2.segments = [];
+			path2.add(view.bounds.bottomLeft);
+			
+			for (var i = 1; i < points; i++) {
+				var point = new Point(width / points * i, center.y);
+				var point1 = new Point((width / points * i)-180, center.y);
+				var point2 = new Point( (width / points * i)+60, center.y);
+				path.add(point);
+				path1.add(point1);
+				path2.add(point2);
+			}
+			path.add(view.bounds.bottomRight);
+			path.fullySelected = false;
+			path1.add(view.bounds.bottomRight);
+			path1.fullySelected = false;
+			path2.add(view.bounds.bottomRight);
+			path2.fullySelected = false;
+		}
+	
+		function onFrame(event) {
+			pathHeight += (center.y - mousePos.y - pathHeight) / 1;
+			for (var i = 1; i < points; i++) {
+				var sinSeed = event.count + (i + i % 10) * 100;
+				var sinHeight = Math.sin(sinSeed / 200) * pathHeight * 0.5 ;
+				var yPos = Math.sin(sinSeed / 100) * sinHeight + height;
+				var sinus = Math.sin(event.time * 3 + i);
+				mousePos.y = sinus * 10;
+				path.segments[i].point.y = yPos;
+				path1.segments[i].point.y = yPos;
+				path2.segments[i].point.y = yPos;
+			}
+			if (smooth){
+				path.smooth();
+				path1.smooth();
+				path2.smooth();
+		}}	
+		
+	</script>
+	<!--bg-canvas-code-end-->	
+	<!--<![endif]-->
+
+</head>
+
+<body>
+
+
+    <div class="span12 hidden-phone hidden-tablet" data-spy="affix" id="div_bgcanvas" >
+	    <canvas id="bgcanvas" resize></canvas>
+	</div>
+	<!-- Bootstrap -->
+    <div class="container-fluid">
+    	<!--loading-animation -->
+	 	<div id="loading" class="span12 hidden-phone">
+		<h2>loading...<img id="loading-image" src="http://chh-portfolio.s3.amazonaws.com/loading.gif" alt="Loading..." /></h2>
+		<h4>loading DOM elements... it will take up to 3 mins if your connection is slow.</h4>
+		<p class="hidden-tablet">Narwhal ethical twee et id, sartorial 90's DIY mlkshk single-origin coffee pork belly deep v.  You probably haven't heard of them eu  Godard freegan, cardigan bespoke banjo bitters cray elit.  Helvetica flannel delectus, sint  pitchfork Odd Future gentrify disrupt authentic reprehenderit  sartorial cillum  hoodie eiusmod.  Odio Truffaut literally, dolore Austin twee flexitarian.  Tousled ennui qui  vegan +1 disrupt.  Cupidatat  et quinoa occaecat  seitan Marfa locavore, +1 aliqua YOLO.  Put a bird on it single-origin coffee voluptate  Wes Anderson Banksy. Gastropub whatever Godard Banksy disrupt asymmetrical.  Asymmetrical Etsy Godard fingerstache Terry Richardson.  Tousled PBR forage, selvage butcher craft beer ethnic Truffaut bespoke Bushwick Neutra hoodie synth Portland farm-to-table.  Cardigan Pinterest wayfarers retro fixie.  Wayfarers twee gentrify Schlitz, swag dreamcatcher helvetica Wes Anderson DIY occupy typewrite</p>
+		</div>
+    	<!--row-fluid-grid-system-->
+        <div class="row-fluid">	
+			<!--cell-phone-menu-->
+			<div class="span2 well visible-phone" id="cell-phone-menu">
+				<a href="mailto:#"><button class="btn btn-mini btn-inverse">menu:</button></a><br/>
+				<a href="#0_intro" data-toggle="tab"><button class="btn btn-mini">intro</button></a>
+				<a href="#1_centroid" data-toggle="tab"><button class="btn btn-mini">centroid</button></a>
+				<a href="#2_limbo" data-toggle="tab"><button class="btn btn-mini">limbo</button></a>
+				<a href="#3_reverberated_labyrinth" data-toggle="tab"><button class="btn btn-mini">reverberated_labyrinth</button></a>
+				<a href="#4_hui_zirkel" data-toggle="tab"><button class="btn btn-mini">hui_zirkel</button></a>
+				<a href="#5_love_and_the_city" data-toggle="tab"><button class="btn btn-mini">love_and_the_city</button></a>
+				<a href="#6_miscellaneous" data-toggle="tab"><button class="btn btn-mini">miscellaneous</button></a>
+				<a href="#7_as_a_photojournalist" data-toggle="tab"><button class="btn btn-mini">as_a_photojournalist</button></a>
+				<a href="#8_at_a_distance" data-toggle="tab"><button class="btn btn-mini">at_a_distance</button></a>
+				<a href="mailto:#"><button class="btn btn-mini btn-inverse">contact: stk.chen@gmail.com</button></a>
+			</div>
+			<!--main-->
+            <div class="span9 well pull-left" id="mian-content">
+            	
+				<div class="tabbable tabs-left" >
+					<!--left_menu-->
+					<ul class="nav nav-tabs hidden-phone">
+						<li class="active"><a href="#0_intro" data-toggle="tab"><button class="btn btn-mini">0_intro</button></a></li>
+						<li><a href="#1_centroid" data-toggle="tab"><button class="btn btn-mini">1_centroid</button></a></li>
+						<li><a href="#2_limbo" data-toggle="tab"><button class="btn btn-mini">2_limbo</button></a></li>
+						<li><a href="#3_reverberated_labyrinth" data-toggle="tab"><button class="btn btn-mini">3_reverberated_labyrinth</button></a></li>
+						<li><a href="#4_hui_zirkel" data-toggle="tab"><button class="btn btn-mini">4_hui_zirkel</button></a></li>
+						<li><a href="#5_love_and_the_city" data-toggle="tab"><button class="btn btn-mini">5_love_and_the_city</button></a></li>
+						<li><a href="#6_miscellaneous" data-toggle="tab"><button class="btn btn-mini">6_miscellaneous</button></a></li>
+						<li><a href="#7_as_a_photojournalist" data-toggle="tab"><button class="btn btn-mini">7_as_a_photojournalist</button></a></li>
+						<li><a href="#8_at_a_distance" data-toggle="tab"><button class="btn btn-mini">8_at_a_distance</button></a></li>
+					</ul>
+					<!--main_content-->	
+					<div class="tab-content">
+						<div class="tab-pane active" id="0_intro">
+								<h4>print 'hello. world'</h4>
+								<p>hello! my name is <strong>Chen Hung-Han</strong>. i write code for living & for Art. this's web site is my portfolio from 2008-2012. please click the links at the left side bar to see more.. </p>
+								<p>i am looking for <strong>MPhil/Ph.D research opportunity in the field of New Media Art or Digital Media</strong>. my research proposal could be download <a href='http://goo.gl/gyF56A'>here</a>, my resume <a href='http://goo.gl/tDRFdv'>here</a>. If you have any relevant offers, please contact me directly. Thanks!</p>
+								<address>
+									<strong>Chen Hung-Han</strong> @ <a href="mailto:#">stk.chen@gmail.com</a>
+								</address>								
+								<p><span class="label label-inverse hidden-phone">interdisciplinary</span><span class="label label-inverse hidden-phone">interactive art</span><span class="label label-inverse hidden-phone">performance</span><span class="label label-inverse hidden-phone">coding</span><span class="label label-inverse hidden-phone">quartz composer</span><span class="label label-inverse hidden-phone">audio-visual specialist</span><span class="label label-inverse hidden-phone">programer</span><span class="label label-inverse hidden-phone">photojournalist</span><span class="label label-inverse hidden-phone">corporation & team works</span><span class="label label-inverse hidden-phone">generative art</span><span class="label label-inverse hidden-phone">hackintosh</span><span class="label label-inverse hidden-phone">video mapping</span></p>
+
+								
+							</div>
+						<div class="tab-pane" id="1_centroid">
+								<h4>Centroid, a Generative Art Project. 2012</h4>
+								<h5>the Visual effect generator is composed by Chen Hung-Han, performed by Yi-Ju Hsu.</h5>
+								<p>Inspired by the theories of the relation between body and universe by philosopher Henri Bergson in Matter and Memory. Emphasizing the concept which took body as a privileged image among all images in the universe. I write a program using Kinect's depth image as the information source to build a particle system( the centroid) as the representation of embodiment.</p>
+								<p>This work cooperate with a professional dancer Yi-Ju Hsu. I ask her to perform & interact with the generator and try to compose a 3-5 mins dance.</p>
+								<p><span class="label label-inverse hidden-phone">solo exhibition</span><span class="label label-inverse hidden-phone">interdisciplinary corporation</span><span class="label label-inverse hidden-phone">interactive performance</span><span class="label label-inverse hidden-phone">particle system</span><span class="label label-inverse hidden-phone">quartz composer</span><span class="label label-inverse hidden-phone">kinect</span><span class="label label-inverse hidden-phone">hackintosh</span><span class="label label-inverse hidden-phone">open ni</span></p>
+								<img alt="" src="img/1_centroid/1.jpg" >
+								<p>centroid, the particle system</p>	
+								<img alt="" src="img/1_centroid/2.jpg">
+								<p>left: the image capture by Kinect. right: the generative result after feeding centroid the image capture by Kinect/</p>
+
+								<img alt="" src="img/1_centroid/3.jpg">
+								<p>the setup of this project.</p>
+
+								<img alt="" src="img/1_centroid/4.jpg">
+								<p>the depth camera, Kinect. It was used as information source in this project.</p>
+										
+								<img alt="" src="img/1_centroid/5.jpg">
+								<p>the setup of this project. this photo indicated how the performer interact with computer image on the screen.</p>
+										
+								<img alt="" src="img/1_centroid/6.jpg">
+								<p>the depth image of the dancer, which is captured by Kinect.</p>
+										
+								<img alt="" src="img/1_centroid/7.jpg">
+								<p>the movement of the dancer.</p>
+										
+								<img alt="" src="img/1_centroid/8.jpg">
+								<p>the body skeleton captured by Kinect and OpneNI. It was used as the position source of centroid.</p>
+
+								<img alt="" src="img/1_centroid/9.jpg">
+								<p>the hackintosh machine i build for this project.</p>
+							
+								<img alt="" src="img/1_centroid/10.jpg">
+								<p>one iMac and one hackintosh.</p>
+
+								<img alt="" src="img/1_centroid/11.jpg">
+								<p>the mackintosh is executing some programs.</p>
+								
+								<div class="videoWrapper">
+								<iframe src="http://player.vimeo.com/video/72805335?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+								<p>final result</p>
+
+							</div>
+						<div class="tab-pane" id="2_limbo">
+								<h4>limbo <span class="label label-important">under construction</span></h4>
+								<h5>Hung-Han, Chen. (2010). Limbo [Illustration].</h5>
+								<p>I'm concerning about the devastating power bringing by language toward the context of language itself. I think that the only part that language presents is the only part of the context that language could represent. I try to preserve other things by making art. This illustration is my first trial. I try to reverse two literally identical ideas : living and death. The name "Limbo" is a speculative idea about the afterlife condition of those who die in Original Sin without being assigned to the Hell of the Damned. I take this idea to express the thing to the space in my illustration.</p>
+								
+								<p><span class="label label-inverse hidden-phone">self</span><span class="label label-inverse hidden-phone">pen</span><span class="label label-inverse hidden-phone">paper</span><span class="label label-inverse hidden-phone">in-between-ness</span></p>
+								
+								<img src="img/2_limbo/1.jpg">
+								<p>processing...</p>
+							</div>
+						<div class="tab-pane" id="3_reverberated_labyrinth">
+								<h4>"Reverberated Labyrinth" - Multimedia Interactive Performance</h4>
+								<p>February 2012 – December 2012 : "Reverberated Labyrinth" was part of A cultural and art exchange activity with The University of Music and Performing Arts Vienna. It was an multimedia interactive performance. Length: 60min. Location: Fanny–Mendelssohn– Saal. I worked as an interactive program designer and an audio-visual specialist.</p>
+								<p><span class="label label-inverse hidden-phone">corporation</span><span class="label label-inverse hidden-phone">quartzcomposer</span><span class="label label-inverse hidden-phone">kinect</span><span class="label label-inverse hidden-phone">performance</span></p>
+
+								
+								<img alt="" src="img/3_reverberated_labyrinth/1.jpg">
+
+								<div class="videoWrapper">
+									<iframe src="http://player.vimeo.com/video/72594243?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+								<p> a intro video about how we build the virtual space of memories on stage as a performance.</p>
+								<div class="videoWrapper">
+								<iframe src="http://player.vimeo.com/video/72599198?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+																
+								<p>This is the 6-mins piece of "the memory Labyrinth" which is one of the most important parts of "Reverberated Labyrinth". In this part of the performance, our team members used the depth camera "Kinect" and projectors to create a virtual space projecting on the stage. The virtual space was intent to represent the meaning of the Chinese word "回(Hui)" and it's derived meaning "回憶(memories)".</p>
+								
+							</div>
+						<div class="tab-pane" id="4_hui_zirkel">
+							
+								<h4>"Hui / Zirkel" - Multimedia Interactive Performance</h4>
+								<p>September 2010 – September 2011 : "Hui / Zirkel" is part of cultural and art exchange activity with TransMediaRT Leipzig, Germany. It was an multimedia interactive performance. Length: 50min. Location: WERK 2 - Kulturfabrik Leipzig, Kochstraß. I worked as an interactive program designer and an audio-visual specialist.</p>
+								<p><span class="label label-inverse hidden-phone">corporated with</span><span class="label label-inverse hidden-phone">quartzcomposer</span><span class="label label-inverse hidden-phone">hackintosh</span><span class="label label-inverse hidden-phone">kinect</span><span class="label label-inverse hidden-phone">performance</span><span class="label label-inverse hidden-phone">projection</span></p>
+								<div class="videoWrapper">
+								<iframe src="http://player.vimeo.com/video/72668737?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+								<p>the complete video of the performance</p>
+								<div class="videoWrapper">
+								<iframe src="http://player.vimeo.com/video/48012966?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+								<p>it's a demonstration on how to operate the program. it also shows the concept of dividing spaces to make a Labyrinth for the performance.</p>
+							</div>
+						<div class="tab-pane" id="5_love_and_the_city">
+								<h4>"Love and the City" - Digital Musician</h4>
+								<p>May 2012 : "Love and the City" is a digital musician cooperated with Director Hu Si-Xian and the crews of 8 Point Space theater in Chengdu, China. It was a digital musician which has 10-12 Chinese love songs chained into a story. I have many roles in this project because of limited resources. I was the cinematographer, the projection planner for video mapping, the interactive program designer and the audio-visual specialist.</p>
+								<p><span class="label label-inverse hidden-phone">mapping</span><span class="label label-inverse hidden-phone">corporation</span><span class="label label-inverse hidden-phone">Quartz Composer</span></p>
+								
+								<img alt="" src="img/5_love_and_the_city/1.jpg">
+								<p>the light of the projector...</p>
+																	
+								<img alt="" src="img/5_love_and_the_city/2.jpg">
+								<p>three screen setup on the stage for projection.</p>
+
+								<img alt="" src="img/5_love_and_the_city/3.jpg">
+								<p>the setup of the scene allows actors crossing the screens.</p>
+
+								<img alt="" src="img/5_love_and_the_city/4.jpg">
+								<p>actors & actress</p>
+										
+								<img alt="" src="img/5_love_and_the_city/5.jpg">
+								<p>two projectors for covering whole stage.</p>
+										
+								<img alt="" src="img/5_love_and_the_city/6.jpg">
+								<p>the projection is interacting with the actor.</p>
+										
+								<img alt="" src="img/5_love_and_the_city/7.jpg">
+								<p>the setup of stage, another prospective.</p>
+										
+								<img alt="" src="img/5_love_and_the_city/8.jpg">
+								<p>plans of projection. working in a dark envirment.</p>
+
+								<img alt="" src="img/5_love_and_the_city/9.jpg">
+								<p>the front right screen and the actress.</p>
+								
+								<img alt="" src="img/5_love_and_the_city/10.jpg">
+								<p>we use iPad to control every key events.</p>
+								
+								<img alt="" src="img/5_love_and_the_city/11.jpg">
+								<p>the hackintosh machine</p>
+								
+								<img alt="" src="img/5_love_and_the_city/12.jpg">
+								<p>working desk... what a mess.</p>
+							</div>
+						<div class="tab-pane" id="6_miscellaneous">
+						
+						<h4>miscellaneous works in 2008-2013  <span class="label label-important">under construction</span></h4>
+							<h5>“Generative logo" for Institute of Applied Arts, NCTU. (2013)</h5>
+								<p>A logo made for Institute of Applied Arts, NCTU. This project became part of my <a href="http://chenhh.tumblr.com/post/57304282749/quartz-composer-performance-part-ii-a-rapid">Quartz Composer tutorials</a>. It was cooperated with a talented illustrator Han-Yun Liang. </p>
+								<p><span class="label label-inverse hidden-phone">typography</span></p>
+								<div class="videoWrapper">
+								<iframe src="http://player.vimeo.com/video/67139956?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="296" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+								<br/><br/><br/>
+
+							<h5>"Zhu-Yun" multimedia performance (2012)</h5>
+								<p>A visual effect generator for music. Written by by Quartz Composer. Corporated with Kimm Liao (the composer)</p>
+								<p><span class="label label-inverse hidden-phone">corporation</span><span class="label label-inverse hidden-phone">quartzcomposer</span><span class="label label-inverse hidden-phone">quartzcomposer</span><span class="label label-inverse hidden-phone">hackintosh</span><span class="label label-inverse hidden-phone">performance</span><span class="label label-inverse hidden-phone">kinect</span><span class="label label-inverse hidden-phone">ipad</span></p>
+								<div class="videoWrapper">
+								<iframe src="http://player.vimeo.com/video/72748829?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+								<br/><br/><br/>
+															
+							<h5>"Moving. Static. Carefree." - Annual Performance of Dept. of Dance of N.T.U.A(Link) (2011)</h5>
+								<p>October 2011 : "Moving, Static, Carefree" was an annual performance of department of dance of National Taiwan University of Arts. In this project, I corporate with Prof. Chi-Min Hsieh and Ho Guang-Jie to design a 10-15min interactive projection on the stage for one chapter of the performance.</p>
+								<div class="videoWrapper">
+								<iframe src="http://player.vimeo.com/video/31646643?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+								<br/><br/><br/>
+						</div>
+						<div class="tab-pane" id="7_as_a_photojournalist">
+								<h4>as a photojournalist</h4>
+								<p>from August 2009 to June 2010 - i was working for the national new agency CNA in Taiwan. Took photos in social events.</p>
+								<p>i was responsible for providing news photos for all kinds of media in Taiwan. I have proven my proficiency in photography by providing 300-350 news photos which were selected by newspapers in one year.</p>
+								<p>i have been a freelance photographer who worked for case by case since i left CNA. i was working for a NGO in Nepal which help children eduction in 2010 (photo i took in Nepal is <a href="http://chhphoto.blogspot.tw/2011/02/nepal-day05-088.html">here</a>). I'm also a wedding / event / conference / ceremony photographer who has at least four years of experience. <a href="http://www.flickr.com/photos/turtleknight/sets/">more photos on flickr.</a></p>
+								<p><span class="label label-inverse hidden-phone">photography</span></p>
+
+								<img alt="" src="img/7_as_a_photojournalist/0.jpg">
+								<p>the photos i took was selected by the editor and posted on the time magazine website & WSJ. it's a taxi drivers protest event in Taipei. (09/12/8)</p>
+								
+								<img alt="" src="img/7_as_a_photojournalist/1.jpg">
+								<p>10/4/13 i was there, at the middle of crowd.</p>
+																	
+								<img alt="" src="img/7_as_a_photojournalist/2.jpg">
+								<p>10/5/31 a performance rehearsal in Taipei.</p>
+
+								<img alt="" src="img/7_as_a_photojournalist/3.jpg">
+								<p>10/4/13 people prayed for those suffer from the flood.</p>
+
+								<img alt="" src="img/7_as_a_photojournalist/4.jpg">
+								<p>09/9/15 soccer players in the olympic for hearing impaired.</p>
+										
+								<img alt="" src="img/7_as_a_photojournalist/5.jpg">
+								<p>10/2/12 the vise president was answering questions.</p>
+										
+								<img alt="" src="img/7_as_a_photojournalist/6.jpg">
+								<p>09/12/8 four riders carrying huge cargos on the street. </p>
+										
+								<img alt="" src="img/7_as_a_photojournalist/7.jpg">
+								<p>10/2/28 a local ceremony blowing the god of the earth for protection.</p>
+										
+								<img alt="" src="img/7_as_a_photojournalist/8.jpg">
+								<p>10/4/7 lots of reporters tracing the mayor of Shanghai.</p>
+
+							</div>
+						<div class="tab-pane" id="8_at_a_distance">
+								<h4>At a Distance <span class="label label-important">under construction</span></h4>
+								<h4>Hung-Han, Chen. (2012). At a Distance [Interdisciplinary Art: Interactive Art + Performance].</h4>
+								<p>Description: Cooperate with Yi-Ju Hsu, a professional dancer. Inspired by the difficulty to find the distinction between a photojournalist and a paparazzi. This work related to my working experience as a photojournalist.</p>
+								<p><span class="label label-inverse hidden-phone">solo</span><span class="label label-inverse hidden-phone">quartzcomposer</span><span class="label label-inverse hidden-phone">hackintosh</span><span class="label label-inverse hidden-phone">performance</span></p>
+								
+								<div class="videoWrapper">
+								<iframe src="http://player.vimeo.com/video/72806989?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+								</div>
+								
+							</div>
+					</div>
+                </div>
+            </div>
+              
+            <!--right-sidebar-->
+			<div class="span3 well hidden-phone pull-right" id="right-sidebar" data-spy="affix">
+                <div class="right_side_bar_tags well">
+                <h6 class="well">contact information</h6>
+                <a href="mailto:#"><button class="btn btn-mini"><span class="visible-desktop">stk.chen</span>@<span class="visible-desktop">gmail.com</span></button></a>
+                <a href="http://www.linkedin.com/in/chenhunghan"><button class="btn btn-mini">Linkedin<span class="visible-desktop"> profile</span></button></a>
+                <a href="http://chenhh.tumblr.com"><button class="btn btn-mini">blog<span class="visible-desktop"> 'this page is intentionally left blank'</span></button></a>
+                </div>
+                <div class="right_side_bar_tags well">
+                <h6 class="well">keywords</h6>
+                <button class="btn btn-mini">shimmers</button>
+                <button class="btn btn-mini">capacities</button>
+                <button class="btn btn-mini">embodiment</button>
+                <button class="btn btn-mini">relatedness</button>
+                <button class="btn btn-mini">adjacency</button>
+                <button class="btn btn-mini">assemblages</button>
+                <button class="btn btn-mini">becomings</button>
+                <button class="btn btn-mini">modulating<span class="visible-desktop"> field</span></button>
+                <button class="btn btn-mini">nonhuman</button>
+                <button class="btn btn-mini">incorporeality</button>
+                <button class="btn btn-mini">ongoingness<span class="visible-desktop"> of process</span></button>
+                <button class="btn btn-mini">beside-ness</button>
+                <button class="btn btn-mini">pedagogic<span class="visible-desktop">-aesthetic</span></button>
+                <button class="btn btn-mini">cliché</button>
+                <button class="btn btn-mini">dispositions</button>
+                <button class="btn btn-mini">in-between<span class="visible-desktop">-ness</span></button>
+                </div>
+            </div>
+			
+        </div>
+    </div>
+
+
+<script src="js/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<!--tabs-url-fix-->
+<script language="javascript" type="text/javascript">
+var hash = document.location.hash;
+var prefix = "tab_";
+if (hash) {
+    $('.nav-tabs a[href='+hash.replace(prefix,"")+']').tab('show');
+} 
+
+// Change hash for page-reload
+$('.nav-tabs a').on('shown', function (e) {
+    window.location.hash = e.target.hash.replace("#", "#" + prefix);
+});
+</script>
+<!--loading-animation-->
+<script language="javascript" type="text/javascript">
+  $(window).load(function() {
+    $('#loading').hide();
+  });
+</script>
+
+<script type="text/javascript">
+var clicky_site_ids = clicky_site_ids || [];
+clicky_site_ids.push(100645574);
+(function() {
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = '//static.getclicky.com/js';
+  ( document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0] ).appendChild( s );
+})();
+</script>
+<noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100645574ns.gif" /></p></noscript>
+
+</body>
+</html>
